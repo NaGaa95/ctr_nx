@@ -82,3 +82,7 @@ If you enjoy my work and want to support me:
 This project is not affiliated with ZeptoLab. Cut the Rope and all related assets are trademarks or property of their respective owners. All rights reserved.
 No assets or program code from Cut the Rope are included in this repository. We do not condone piracy and encourage users to legally obtain the original game.
 Unless specified otherwise, the source code in this repository is licensed under the MIT License. See the accompanying [LICENSE](LICENSE) file.
+
+### SaltyNX telemetry
+
+FPS and render resolution are published to SaltyNX shared memory for compatible overlays. The port continues normally when SaltyNX is not running. This reports presentation timing and resolution; it does not change the game's frame cap.
