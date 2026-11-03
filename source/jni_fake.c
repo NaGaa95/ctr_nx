@@ -20,6 +20,7 @@
 #include "util.h"
 #include "jni_fake.h"
 #include "android_native_unity.h"
+#include "offline_subscription.h"
 #include "asset_pack.h"
 #include "jni_unimpl.h"
 #include "libc_shim.h"   /* managed_path: device-less paths for managed code */
@@ -292,13 +293,15 @@ int jni_offline_subscription_tap(float x, float y) {
     return 0;
 
   const char *product_id = NULL;
-  /* CTR's portrait premium screen has two inert offer cards in this build.
+  /* CTR's premium screen has two inert offer cards in this build.
    * The upper card is the no-ads bundle (offer4), while the lower card is the
    * full +250-booster offer (offer8). These bounds intentionally cover the
    * complete cards, not just their text, and exclude the close button. */
-  if (x >= 250.0f && x <= 600.0f && y >= 760.0f && y <= 960.0f) {
+  const int offer = offline_subscription_offer_at(x, y,
+      (float)android_native_width(), (float)android_native_height());
+  if (offer == 4) {
     product_id = "com.zeptolab.cuttheropelite.offer4";
-  } else if (x >= 350.0f && x <= 680.0f && y >= 980.0f && y <= 1180.0f) {
+  } else if (offer == 8) {
     product_id = "com.zeptolab.cuttheropelite.offer8";
   }
   if (!product_id) return 0;

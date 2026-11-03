@@ -1,4 +1,4 @@
-# Cut the Rope NX 1.0.0 release build.
+# Cut the Rope Nintendo Switch wrapper.
 .SUFFIXES:
 ifeq ($(strip $(DEVKITPRO)),)
 $(error "Set DEVKITPRO in your environment. (export DEVKITPRO=/opt/devkitpro)")
@@ -9,7 +9,7 @@ include $(DEVKITPRO)/libnx/switch_rules
 TARGET      := ctr_nx
 APP_TITLE   := Cut the Rope
 APP_AUTHOR  := naga
-APP_VERSION := 1.0.1
+APP_VERSION := 1.0.2
 APP_ICON    := $(TOPDIR)/icon.jpg
 export APP_TITLE APP_AUTHOR APP_VERSION APP_ICON
 BUILD     := build
